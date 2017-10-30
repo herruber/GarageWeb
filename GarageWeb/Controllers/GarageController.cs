@@ -13,12 +13,12 @@ namespace GarageWeb.Controllers
 {
     public class GarageController : Controller
     {
-        private GarageContext db = new GarageContext();
+        private Repository Rep = new Repository();
 
         // GET: Garage
         public ActionResult Index()
         {
-            return View(db.Vehicles.ToList());
+            return View(Rep.GetStock().ToList());
         }
 
         // GET: Garage/Details/5
