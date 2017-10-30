@@ -9,10 +9,41 @@ namespace GarageWeb.DataAccess
     {
 
         GarageContext gC = new GarageContext();
+        
 
-        public IEnumerable<Models.Vehicle> GetStock()
+        public IEnumerable<Models.Vehicle> RerouteSearch(string term) //Entry point for search
         {
-            var tempStock = gC.Vehicles;
+            if (term != null && term != "")
+            {
+                return RegHandler(term).ToList();
+            }
+            else
+            {
+                return GetStock().ToList();
+            }
+        }
+
+        public IEnumerable<Models.Vehicle> GetStock() //Used to display stock
+        {
+
+            return gC.Vehicles;
+        }
+
+        public IEnumerable<Models.Vehicle> RegHandler(string term) //Used with searchterm
+        {
+            IEnumerable<Models.Vehicle> tempStock = new List<Models.Vehicle>();
+
+            if (term.Trim() != null && term.Trim() != "") //If searchterm is not empty
+            {
+
+                tempStock = gC.Vehicles.Where(e => e.Regnr.ToLower().Equals(term.ToLower())); //IF regnr or persnr was a match
+
+            }
+            else
+            {
+                tempStock = gC.Vehicles;
+            }
+
             return tempStock;
         }
 

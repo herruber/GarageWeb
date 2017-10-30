@@ -12,7 +12,8 @@ namespace GarageWeb.DataAccess
         public DbSet<Models.Vehicle> Vehicles { get; set; }
 
 
-        public GarageContext() : base()
+
+        public GarageContext() : base("DefaultConnection")
         {
 
         }
