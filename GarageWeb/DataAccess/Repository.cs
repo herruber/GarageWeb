@@ -9,9 +9,11 @@ namespace GarageWeb.DataAccess
     {
 
         GarageContext gC = new GarageContext();
+        
 
         public IEnumerable<Models.Vehicle> GetStock()
         {
+           
             var tempStock = gC.Vehicles;
             return tempStock;
         }

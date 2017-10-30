@@ -117,6 +117,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Common.cs" />
     <Compile Include="Controllers\GarageController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DataAccess\GarageContext.cs" />
@@ -124,6 +125,35 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710301040237_Init.cs" />
+    <Compile Include="Migrations\201710301040237_Init.Designer.cs">
+      <DependentUpon>201710301040237_Init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710301120159_Test.cs" />
+    <Compile Include="Migrations\201710301120159_Test.Designer.cs">
+      <DependentUpon>201710301120159_Test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710301155520_Test2.cs" />
+    <Compile Include="Migrations\201710301155520_Test2.Designer.cs">
+      <DependentUpon>201710301155520_Test2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710301159478_Test3.cs" />
+    <Compile Include="Migrations\201710301159478_Test3.Designer.cs">
+      <DependentUpon>201710301159478_Test3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710301201234_Test4.cs" />
+    <Compile Include="Migrations\201710301201234_Test4.Designer.cs">
+      <DependentUpon>201710301201234_Test4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710301207413_ConnectionFix.cs" />
+    <Compile Include="Migrations\201710301207413_ConnectionFix.Designer.cs">
+      <DependentUpon>201710301207413_ConnectionFix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710301217433_ss.cs" />
+    <Compile Include="Migrations\201710301217433_ss.Designer.cs">
+      <DependentUpon>201710301217433_ss.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Vehicle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -152,7 +182,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -171,7 +203,29 @@
     <Content Include="Views\Garage\Edit.cshtml" />
     <Content Include="Views\Garage\Add.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201710301040237_Init.resx">
+      <DependentUpon>201710301040237_Init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710301120159_Test.resx">
+      <DependentUpon>201710301120159_Test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710301155520_Test2.resx">
+      <DependentUpon>201710301155520_Test2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710301159478_Test3.resx">
+      <DependentUpon>201710301159478_Test3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710301201234_Test4.resx">
+      <DependentUpon>201710301201234_Test4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710301207413_ConnectionFix.resx">
+      <DependentUpon>201710301207413_ConnectionFix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710301217433_ss.resx">
+      <DependentUpon>201710301217433_ss.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
