@@ -32,7 +32,7 @@ namespace GarageWeb.Controllers
             }
             else
             {
-                return View("Remove", tempVehicles.ElementAt(0)); //If regnr is not null return whole stock, else only the regnr
+                return View("Add"); //If regnr is not null return whole stock, else only the regnr
             }
             
         }
