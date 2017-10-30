@@ -1,0 +1,35 @@
+﻿@model GarageWeb.Models.Vehicle
+
+@{
+    ViewBag.Title = "Checkout";
+}
+
+<h2>Checkout</h2>
+
+<div>
+    <h4>Vehicle</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Persnr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Persnr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ParkDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ParkDate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Regnr }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
