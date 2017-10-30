@@ -170,6 +170,7 @@
     <Content Include="Views\Garage\Index.cshtml" />
     <Content Include="Views\Garage\Edit.cshtml" />
     <Content Include="Views\Garage\Add.cshtml" />
+    <Content Include="Views\Garage\Checkout.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
