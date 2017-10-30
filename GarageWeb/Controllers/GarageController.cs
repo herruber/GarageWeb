@@ -16,9 +16,25 @@ namespace GarageWeb.Controllers
         private Repository Rep = new Repository();
 
         // GET: Garage
-        public ActionResult Index()
+        public ActionResult Index(string regnr = null)
         {
-            return View(Rep.GetStock().ToList());
+
+            if (regnr == null)
+            {
+                return View(Rep.GetStock());
+            }
+
+            var tempVehicles = Rep.RerouteSearch(regnr);
+
+            if (tempVehicles == null) //If no results check in vehicle
+            {
+                return View("Add", tempVehicles.ElementAt(0)); //If vehicle was already checked in, ask if checkout
+            }
+            else
+            {
+                return View("Remove", tempVehicles.ElementAt(0)); //If regnr is not null return whole stock, else only the regnr
+            }
+            
         }
 
         // GET: Garage/Details/5
