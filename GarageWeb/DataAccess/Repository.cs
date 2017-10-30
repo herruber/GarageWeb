@@ -15,5 +15,27 @@ namespace GarageWeb.DataAccess
             var tempStock = gC.Vehicles;
             return tempStock;
         }
+
+        public void Updatedb()
+        {
+            gC.SaveChanges();
+
+        }
+
+        public void CheckOut(string input) //Regnr or personnr
+        {
+            var tempVehicle = gC.Vehicles.FirstOrDefault(e => e.Regnr.ToLower().Contains(input.ToLower()));
+
+            gC.Vehicles.Remove(tempVehicle);
+
+
+        }
+
+        public void AddVehicle(Models.Vehicle vehicle)
+        {
+            gC.Vehicles.Add(vehicle);
+        }
+
+
     }
 }
