@@ -125,33 +125,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201710301040237_Init.cs" />
-    <Compile Include="Migrations\201710301040237_Init.Designer.cs">
-      <DependentUpon>201710301040237_Init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710301120159_Test.cs" />
-    <Compile Include="Migrations\201710301120159_Test.Designer.cs">
-      <DependentUpon>201710301120159_Test.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710301155520_Test2.cs" />
-    <Compile Include="Migrations\201710301155520_Test2.Designer.cs">
-      <DependentUpon>201710301155520_Test2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710301159478_Test3.cs" />
-    <Compile Include="Migrations\201710301159478_Test3.Designer.cs">
-      <DependentUpon>201710301159478_Test3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710301201234_Test4.cs" />
-    <Compile Include="Migrations\201710301201234_Test4.Designer.cs">
-      <DependentUpon>201710301201234_Test4.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710301207413_ConnectionFix.cs" />
-    <Compile Include="Migrations\201710301207413_ConnectionFix.Designer.cs">
-      <DependentUpon>201710301207413_ConnectionFix.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710301217433_ss.cs" />
-    <Compile Include="Migrations\201710301217433_ss.Designer.cs">
-      <DependentUpon>201710301217433_ss.cs</DependentUpon>
+    <Compile Include="Migrations\201710310819261_new.cs" />
+    <Compile Include="Migrations\201710310819261_new.Designer.cs">
+      <DependentUpon>201710310819261_new.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Vehicle.cs" />
@@ -159,9 +135,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\GarageDb.mdf" />
-    <Content Include="App_Data\GarageDb_log.ldf">
-      <DependentUpon>GarageDb.mdf</DependentUpon>
-    </Content>
+    <Content Include="App_Data\GarageDb_log.ldf" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -205,34 +179,17 @@
     <Content Include="Views\Garage\Remove.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201710301040237_Init.resx">
-      <DependentUpon>201710301040237_Init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710301120159_Test.resx">
-      <DependentUpon>201710301120159_Test.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710301155520_Test2.resx">
-      <DependentUpon>201710301155520_Test2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710301159478_Test3.resx">
-      <DependentUpon>201710301159478_Test3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710301201234_Test4.resx">
-      <DependentUpon>201710301201234_Test4.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710301207413_ConnectionFix.resx">
-      <DependentUpon>201710301207413_ConnectionFix.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710301217433_ss.resx">
-      <DependentUpon>201710301217433_ss.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201710310819261_new.resx">
+      <DependentUpon>201710310819261_new.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
