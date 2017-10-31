@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Globalization;
+using System.Diagnostics;
 
 namespace GarageWeb
 {
@@ -77,6 +78,18 @@ namespace GarageWeb
 
         }
 
+        public static void Timer(int ms)
+        {
+
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+
+            while (sw.ElapsedMilliseconds < ms)
+            {
+
+
+            }
+        }
 
     }
 }

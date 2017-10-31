@@ -40,17 +40,25 @@ namespace GarageWeb.DataAccess
 
         }
 
-        public void CheckOut(string[] input) //Regnr
+        public bool CheckOut(string[] input) //Regnr
         {
-            foreach (var item in input)
+            try
             {
-                var tempVehicle = gC.Vehicles.FirstOrDefault(e => e.Regnr.ToLower().Contains(item.ToLower()));
+                foreach (var item in input)
+                {
+                    var tempVehicle = gC.Vehicles.FirstOrDefault(e => e.Regnr.ToLower().Contains(item.ToLower()));
 
-                gC.Vehicles.Remove(tempVehicle);
-                gC.SaveChanges();
+                    gC.Vehicles.Remove(tempVehicle);
+                    gC.SaveChanges();
+                    
+                }
             }
-           
+            catch
+            {
+                return false;
+            }
 
+            return true;
         }
 
         public void AddVehicle(Models.Vehicle vehicle)
