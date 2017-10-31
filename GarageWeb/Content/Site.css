@@ -22,3 +22,14 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.navbar-header{
+        display: block;
+    text-align: center;
+    padding-top: 15px;
+}
+
+#counter{
+    counter-increment: var item in Model;
+}
+
