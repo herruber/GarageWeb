@@ -125,17 +125,19 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201710311239031_test.cs" />
-    <Compile Include="Migrations\201710311239031_test.Designer.cs">
-      <DependentUpon>201710311239031_test.cs</DependentUpon>
+    <Compile Include="Migrations\201710311212188_start.cs" />
+    <Compile Include="Migrations\201710311212188_start.Designer.cs">
+      <DependentUpon>201710311212188_start.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Vehicle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\GarageDb.mdf" />
-    <Content Include="App_Data\GarageDb_log.ldf" />
+    <Content Include="App_Data\Garage.mdf" />
+    <Content Include="App_Data\Garage_log.ldf">
+      <DependentUpon>Garage.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -186,8 +188,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201710311239031_test.resx">
-      <DependentUpon>201710311239031_test.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201710311212188_start.resx">
+      <DependentUpon>201710311212188_start.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
