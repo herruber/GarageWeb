@@ -175,9 +175,6 @@ namespace GarageWeb.Controllers
             return RedirectToAction("Index");
         }
      
-        int a = Common.ParkSpace; 
-        foreach (var item in Model)
-        {a--;}
-         Write(a);
+
     }
 }
