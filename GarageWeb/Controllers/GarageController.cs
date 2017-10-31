@@ -56,8 +56,14 @@ namespace GarageWeb.Controllers
 
         public ActionResult ConfirmDelete(string[] id)
         {
-            Rep.CheckOut(id);
+            if (Rep.CheckOut(id))
+            {
+                 
+            }
+
+
             return RedirectToAction("Index", "Garage");
+
         }
 
         // GET: Garage/Details/5
