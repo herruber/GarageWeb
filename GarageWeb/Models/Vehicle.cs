@@ -25,7 +25,7 @@ namespace GarageWeb.Models
         public Vehicle(string regnr, string persnr, Common.vType vehicletype)
         {
             ParkDate = Common.CurrentDate();
-            
+            //hej
             Regnr = regnr;
             Persnr = persnr;
             VehicleType = vehicletype;
