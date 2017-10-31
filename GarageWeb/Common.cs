@@ -9,7 +9,7 @@ namespace GarageWeb
 {
     public static class Common
     {
-        public static int ParkSpace = 6; 
+        public static int ParkSpace = 99; 
 
         public enum vType
         {
