@@ -20,20 +20,21 @@ namespace GarageWeb.Controllers
         public ActionResult Index(string regnr = null)
         {
 
-            if (regnr == null)
+            if (regnr == null || regnr.Trim() == "")
             {
                 return View(Rep.GetStock());
             }
 
-            var tempVehicles = Rep.RerouteSearch(regnr);
+            var tempVehicles = Rep.RegHandler(regnr);
 
             if (tempVehicles == null) //If no results check in vehicle
             {
-                return View("Add", tempVehicles.ElementAt(0)); //If vehicle was already checked in, ask if checkout
+                ViewBag.Regnr = regnr;
+                return View("Add"); //If vehicle was already checked in, ask if checkout
             }
             else
             {
-                return View("Add"); //If regnr is not null return whole stock, else only the regnr
+                return View("Remove", tempVehicles); //If regnr is not null return whole stock, else only the regnr
             }
             
         }

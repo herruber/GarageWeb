@@ -2,9 +2,10 @@
 
 @{
     ViewBag.Title = "Add";
+    
 }
 
-<h2>Add</h2>
+<h2>Check in vehicle</h2>
 
 
 @using (Html.BeginForm()) 
@@ -13,7 +14,15 @@
     
     <div class="form-horizontal">
 
-        <h4>Do you want to checkin?</h4>
+        @{
+           Common.VehicleInfo vh = Common.GatherInfo(ViewBag.Regnr);
+           
+           string Confirmation = vh.vehicletype + " with regnr " + vh.regnr + " owned by " + " " + vh.persnr;
+        }
+
+
+        <h4>@Confirmation</h4>
+        <p>Checking current vehicle?</p>
         <hr />
 
 

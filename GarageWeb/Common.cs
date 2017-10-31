@@ -23,6 +23,7 @@ namespace GarageWeb
 		        public bool isvalid;
                 public string persnr;
                 public vType vehicletype;
+                public string regnr;
 
 	        }
 
@@ -38,23 +39,37 @@ namespace GarageWeb
         }
 
 
-        //public VehicleInfo GatherInfo(string regnr)
-        //{
-        //    Random rand = new Random();
+        public static VehicleInfo GatherInfo(string _regnr)
+        {
+            Random rand = new Random();
 
-        //    VehicleInfo vh = new VehicleInfo();
+            VehicleInfo vh = new VehicleInfo();
 
-        //    //Generate person number
-        //    vh.persnr = 9 - rand.Next(0, 4) + rand.Next(0, 7) + rand.Next(1, 12) + rand.Next(1, 29) + "-" + rand.Next(1000, 9999);
+            //Generate person number
+            vh.persnr = 9 - rand.Next(0, 4)+"" + rand.Next(0, 7) +"" + rand.Next(1, 12) +"" + rand.Next(1, 29) + "-" + rand.Next(1000, 9999);
 
-        //    switch (rand.Next(0, 3))
-        //    {
-        //        default:
-        //            break;
-        //    }
+            switch (rand.Next(0, 3))
+            {
+                case 0:
+                    vh.vehicletype = vType.Car;
+                    break;
+                case 1:
+                    vh.vehicletype = vType.Bus;
+                    break;
+                case 2:
+                    vh.vehicletype = vType.Truck;
+                    break;
+                case 3:
+                    vh.vehicletype = vType.Mc;
+                    break;
+            }
 
+            vh.isvalid = true;
+            vh.regnr = _regnr;
 
-        //}
+            return vh;
+
+        }
 
 
     }
