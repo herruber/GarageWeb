@@ -1,0 +1,3 @@
+﻿1: Select all database and database migration files and select undo. In your git view.
+2: They are now moved to untracked files, select them all and right click. Choose ignore these local items
+3: Git now ignores your local database and database migrations files
