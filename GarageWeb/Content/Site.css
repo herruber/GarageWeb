@@ -29,7 +29,17 @@ textarea {
     padding-top: 15px;
 }
 
-#counter{
-    counter-increment: var item in Model;
+.counter{
+    background-color: lime;
 }
 
+#LotCounter{
+    border: 1px solid black;
+    margin-left: auto;
+    margin-right: 90%;
+}
+
+.searchfield{
+    padding-top: 15px;
+    text-align: center;
+}
