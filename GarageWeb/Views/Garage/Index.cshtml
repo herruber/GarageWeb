@@ -6,9 +6,6 @@
 
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Add")
-</p>
 <!--test-->
 <form method="get">
     
@@ -16,9 +13,16 @@
 
 </form>
 
+@using (Html.BeginForm("ConfirmDelete", "Garage", FormMethod.Get))
+{
+
+
 <!---->
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Regnr)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.Persnr)
         </th>
@@ -28,20 +32,31 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Persnr)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ParkDate)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Regnr }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Regnr }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Regnr })
-        </td>
-    </tr>
-}
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Regnr)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Persnr)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ParkDate)
+            </td>
+            <td>
+                
+                <input id="delbox" type="checkbox" name="id" value="@item.Regnr" />
+
+            </td>
+        </tr>
+    }
+
 
 </table>
+
+    <input type="submit" value="Check out" class="btn btn-default" />
+
+}
+
