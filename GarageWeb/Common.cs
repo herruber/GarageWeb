@@ -24,6 +24,7 @@ namespace GarageWeb
                 public string persnr;
                 public vType vehicletype;
                 public string regnr;
+                public DateTime parkdate;
 
 	        }
 
@@ -48,7 +49,9 @@ namespace GarageWeb
             //Generate person number
             vh.persnr = 9 - rand.Next(0, 4)+"" + rand.Next(0, 7) +"" + rand.Next(1, 12) +"" + rand.Next(1, 29) + "-" + rand.Next(1000, 9999);
 
-            switch (rand.Next(0, 3))
+            vh.isvalid = true;
+
+            switch (rand.Next(0, 100))
             {
                 case 0:
                     vh.vehicletype = vType.Car;
@@ -62,10 +65,13 @@ namespace GarageWeb
                 case 3:
                     vh.vehicletype = vType.Mc;
                     break;
+                default:
+                    vh.isvalid = false;
+                    break;
             }
-
-            vh.isvalid = true;
+            
             vh.regnr = _regnr;
+            vh.parkdate = CurrentDate();
 
             return vh;
 

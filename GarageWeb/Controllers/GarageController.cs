@@ -28,7 +28,15 @@ namespace GarageWeb.Controllers
 
             if (tempVehicles == null) //If no results check in vehicle
             {
+                
+                Common.VehicleInfo vh = Common.GatherInfo(regnr);
+                
+                ViewBag.Valid = vh.isvalid;
+                ViewBag.Persnr = vh.persnr;
+                ViewBag.Vtype = vh.vehicletype;
                 ViewBag.Regnr = regnr;
+                ViewBag.Date = vh.parkdate;
+
                 return View("Add"); //If vehicle was already checked in, ask if checkout
             }
             else
@@ -36,6 +44,19 @@ namespace GarageWeb.Controllers
                 return View("Remove", tempVehicles); //If regnr is not null return whole stock, else only the regnr
             }
             
+        }
+
+        public ActionResult ConfirmAdd(Common.vType vtype, string regnr, string persnr, DateTime date)
+        {
+
+           Rep.AddVehicle(vtype, regnr, persnr, date);
+           return RedirectToAction("Index", "Garage");
+        }
+
+        public ActionResult ConfirmDelete(string regnr)
+        {
+            Rep.CheckOut(regnr);
+            return RedirectToAction("Index", "Garage");
         }
 
         // GET: Garage/Details/5

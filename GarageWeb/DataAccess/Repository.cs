@@ -21,15 +21,15 @@ namespace GarageWeb.DataAccess
         {
             // IEnumerable<Models.Vehicle> tempStock = new List<Models.Vehicle>();
 
-            var tempStock = gC.Vehicles.Where(e => e.Regnr.ToLower().Equals(term.ToLower())); //IF regnr or persnr was a match
+            var tempStock = gC.Vehicles.FirstOrDefault(e => e.Regnr.ToLower().Equals(term.ToLower())); //IF regnr or persnr was a match
 
-            if (tempStock.Count() == 0)
+            if (tempStock == null)
             {
                 return null;
             }
             else
             {
-                return tempStock.ElementAt(0);
+                return tempStock;
             }
          
         }
@@ -45,13 +45,26 @@ namespace GarageWeb.DataAccess
             var tempVehicle = gC.Vehicles.FirstOrDefault(e => e.Regnr.ToLower().Contains(input.ToLower()));
 
             gC.Vehicles.Remove(tempVehicle);
-
+            gC.SaveChanges();
 
         }
 
         public void AddVehicle(Models.Vehicle vehicle)
         {
             gC.Vehicles.Add(vehicle);
+            gC.SaveChanges();
+        }
+
+        public void AddVehicle(Common.vType vtype, string regnr, string persnr, DateTime parkdate)
+        {
+            Models.Vehicle vehicle = new Models.Vehicle();
+            vehicle.ParkDate = parkdate;
+            vehicle.Persnr = persnr;
+            vehicle.Regnr = regnr;
+            vehicle.VehicleType = vtype;
+
+            gC.Vehicles.Add(vehicle);
+            gC.SaveChanges();
         }
 
 
