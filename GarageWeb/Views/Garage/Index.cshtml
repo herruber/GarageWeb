@@ -3,19 +3,27 @@
 @{
     ViewBag.Title = "Index";
 }
-
-<h2>Index</h2>
-
-<!--test-->
-<form method="get">
-    
+<form method="get" class="searchfield">
     <input type="text" name="regnr" /> <button type="submit">Submit</button>
-
 </form>
 
 @using (Html.BeginForm("ConfirmDelete", "Garage", FormMethod.Get))
 {
-
+    <table id="LotCounter">
+        <tr>
+            <th>
+                Free Lots:
+            </th>
+            <td class="counter">
+               @{ 
+                  int a = Common.ParkSpace; 
+                  foreach (var item in Model)
+                  {a--;}
+                  Write(a);
+                }
+            </td>
+        </tr>
+    </table>
 
 <!---->
 <table class="table">
