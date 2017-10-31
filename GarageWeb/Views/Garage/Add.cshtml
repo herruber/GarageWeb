@@ -2,9 +2,10 @@
 
 @{
     ViewBag.Title = "Add";
+    
 }
 
-<h2>Add</h2>
+<h2>Check in vehicle</h2>
 
 
 @using (Html.BeginForm()) 
@@ -13,15 +14,33 @@
     
     <div class="form-horizontal">
 
-        <h4>Do you want to checkin?</h4>
+        @*Use the regnr we got from controller viewbag*@
+
+            
+           @{
+               
+                
+                string Confirmation = ViewBag.Vtype + " with regnr " + ViewBag.Regnr + " owned by " + " " + ViewBag.Persnr;
+           }
+
+           
+        
+
+
+        <h4>@Confirmation</h4>
+        <p>Check in current vehicle?</p>
         <hr />
 
+        <form>
+            @Html.ActionLink("Check in", "ConfirmAdd", new { vtype = ViewBag.Vtype, regnr = ViewBag.Regnr, persnr = ViewBag.Persnr, date = ViewBag.Date })
+        </form>
+        
 
-        <div class="form-group">
+        @*<div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Create" class="btn btn-default" @Url.Action("ConfirmAdd", "Garage", new { vtype = ViewBag.Vtype, regnr = ViewBag.Regnr, persnr = ViewBag.Persnr, date = ViewBag.Date }) />
             </div>
-        </div>
+        </div>*@
     </div>
 }
 

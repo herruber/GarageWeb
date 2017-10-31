@@ -11,6 +11,7 @@ using GarageWeb.Models;
 
 namespace GarageWeb.Controllers
 {
+    //stuff
     public class GarageController : Controller
     {
         private Repository Rep = new Repository();
@@ -19,22 +20,44 @@ namespace GarageWeb.Controllers
         public ActionResult Index(string regnr = null)
         {
 
-            if (regnr == null)
+            if (regnr == null || regnr.Trim() == "")
             {
                 return View(Rep.GetStock());
             }
 
-            var tempVehicles = Rep.RerouteSearch(regnr);
+            var tempVehicles = Rep.RegHandler(regnr);
 
             if (tempVehicles == null) //If no results check in vehicle
             {
-                return View("Add", tempVehicles.ElementAt(0)); //If vehicle was already checked in, ask if checkout
+                
+                Common.VehicleInfo vh = Common.GatherInfo(regnr);
+                
+                ViewBag.Valid = vh.isvalid;
+                ViewBag.Persnr = vh.persnr;
+                ViewBag.Vtype = vh.vehicletype;
+                ViewBag.Regnr = regnr;
+                ViewBag.Date = vh.parkdate;
+
+                return View("Add"); //If vehicle was already checked in, ask if checkout
             }
             else
             {
-                return View("Add"); //If regnr is not null return whole stock, else only the regnr
+                return View("Remove", tempVehicles); //If regnr is not null return whole stock, else only the regnr
             }
             
+        }
+
+        public ActionResult ConfirmAdd(Common.vType vtype, string regnr, string persnr, DateTime date)
+        {
+
+           Rep.AddVehicle(vtype, regnr, persnr, date);
+           return RedirectToAction("Index", "Garage");
+        }
+
+        public ActionResult ConfirmDelete(string[] id)
+        {
+            Rep.CheckOut(id);
+            return RedirectToAction("Index", "Garage");
         }
 
         // GET: Garage/Details/5
