@@ -47,6 +47,12 @@ namespace GarageWeb.Controllers
             
         }
 
+        public ActionResult Remove(string[] id)
+        {
+
+            return View(Rep.GetFromRegnr(id));
+        }
+
         public ActionResult ConfirmAdd(Common.vType vtype, string regnr, string persnr, DateTime date)
         {
 

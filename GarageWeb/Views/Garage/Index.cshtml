@@ -7,7 +7,7 @@
     <input type="text" name="regnr" /> <button type="submit">Submit</button>
 </form>
 
-@using (Html.BeginForm("ConfirmDelete", "Garage", FormMethod.Get))
+@using (Html.BeginForm("Remove", "Garage", FormMethod.Get))
 {
     <table id="LotCounter">
         <tr>
@@ -30,15 +30,6 @@
 				}
 			}
 
-
-            @*<td class="counter">
-               @{ 
-                  int a = Common.ParkSpace; 
-                  foreach (var item in Model)
-                  {a--;}
-                  
-                }
-            </td>*@
         </tr>
     </table>
 

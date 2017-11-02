@@ -40,6 +40,38 @@ namespace GarageWeb.DataAccess
 
         }
 
+        public bool CheckOut(IEnumerable<Models.Vehicle> input)
+        {
+            try
+            {
+                foreach (var item in input)
+                {
+
+                    gC.Vehicles.Remove(item);
+                    gC.SaveChanges();
+
+                }
+            }
+            catch
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public IEnumerable<Models.Vehicle> GetFromRegnr(string[] regnr)
+        {
+            List<Models.Vehicle> retVehicles = new List<Models.Vehicle>();
+
+            foreach (var item in regnr)
+            {
+                retVehicles.Add(gC.Vehicles.FirstOrDefault(e => e.Regnr == item));
+            }
+
+            return retVehicles;
+        }
+
         public bool CheckOut(string[] input) //Regnr
         {
             try

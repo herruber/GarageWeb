@@ -1,4 +1,4 @@
-﻿@model GarageWeb.Models.Vehicle
+﻿@model IEnumerable<GarageWeb.Models.Vehicle>
 
 @{
     ViewBag.Title = "Remove";
@@ -6,43 +6,56 @@
 
 <h2>Remove</h2>
 
-<h3>Are you sure you want to checkout this vehicle?</h3>
+<h3>Are you sure you want to checkout these vehicles?</h3>
 <div>
     <h4>Vehicle</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Persnr)
-        </dt>
+@using (Html.BeginForm("ConfirmDelete", "Garage"))
+{
+	<table class="table">
+		<tr>
+			<th>
+				@Html.DisplayNameFor(model => model.Regnr)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Persnr)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.ParkDate)
+			</th>
+			<th>
+				<text>Price</text>
+			</th>
+		</tr>
 
-        <dd>
-            @Html.DisplayFor(model => model.Persnr)
-        </dd>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>
+					@Html.DisplayFor(modelItem => item.Regnr)
+					<input type="hidden" name="id" value="@item.Regnr"/>
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Persnr)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.ParkDate)
+				</td>
+				<td>
+					@string.Format("{0:0.00}", Common.CalcPrice(item))
+				</td>
+			</tr>
+		}
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ParkDate)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ParkDate)
-        </dd>
+	</table>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.VehicleType)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.VehicleType)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm("ConfirmDelete", "Garage")) {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="hidden" name="regnr" value="@Model.Regnr" />
-            <input type="submit" value="Check out" class="btn btn-default" /> |
+            
+            <input type="submit" value="Confirm" class="btn btn-default" /> |
             @Html.ActionLink("Back to List", "Index")
         </div>
     }
