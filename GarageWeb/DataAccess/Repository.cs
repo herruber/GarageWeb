@@ -72,7 +72,7 @@ namespace GarageWeb.DataAccess
             Models.Vehicle vehicle = new Models.Vehicle();
             vehicle.ParkDate = parkdate;
             vehicle.Persnr = persnr;
-            vehicle.Regnr = regnr;
+            vehicle.Regnr = regnr.ToUpper();
             vehicle.VehicleType = vtype;
 
             gC.Vehicles.Add(vehicle);
