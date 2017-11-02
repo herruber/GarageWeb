@@ -14,14 +14,31 @@
             <th>
                 Free Lots:
             </th>
-            <td class="counter">
+
+
+			@{ 
+				int freelots = Common.FreeLots(Model.Count());
+
+
+				if (freelots > 0)
+				{
+					<td class="counter"><text>@freelots</text></td>
+				}
+				else
+				{
+					<td class="counterred"><text>@freelots</text></td>
+				}
+			}
+
+
+            @*<td class="counter">
                @{ 
                   int a = Common.ParkSpace; 
                   foreach (var item in Model)
                   {a--;}
-                  Write(a);
+                  
                 }
-            </td>
+            </td>*@
         </tr>
     </table>
 

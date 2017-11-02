@@ -33,6 +33,10 @@ textarea {
     background-color: lime;
 }
 
+.counterred{
+	background-color: red;
+}
+
 #LotCounter{
     border: 1px solid black;
     margin-left: auto;
