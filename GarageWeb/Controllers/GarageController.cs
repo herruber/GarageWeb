@@ -14,18 +14,18 @@ namespace GarageWeb.Controllers
     //stuff
     public class GarageController : Controller
     {
-        private Repository Rep = new Repository();
+        //private Repository Rep = new Repository();
 
         // GET: Garage
-        public ActionResult Index(string regnr = null)
+        public ActionResult Index(string regnr = null, int filtering = 0, int option = 0)
         {
 
             if (regnr == null || regnr.Trim() == "")
             {
-                return View(Rep.GetStock());
+                return View(Repository.GetStock(filtering, option));
             }
 
-            var tempVehicles = Rep.RegHandler(regnr);
+            var tempVehicles = Repository.RegHandler(regnr);
 
             if (tempVehicles == null) //If no results check in vehicle
             {
@@ -50,19 +50,19 @@ namespace GarageWeb.Controllers
         public ActionResult Remove(string[] id)
         {
 
-            return View(Rep.GetFromRegnr(id));
+            return View(Repository.GetFromRegnr(id));
         }
 
         public ActionResult ConfirmAdd(Common.vType vtype, string regnr, string persnr, DateTime date)
         {
 
-           Rep.AddVehicle(vtype, regnr, persnr, date);
+           Repository.AddVehicle(vtype, regnr, persnr, date);
            return RedirectToAction("Index", "Garage");
         }
 
         public ActionResult ConfirmDelete(string[] id)
         {
-            if (Rep.CheckOut(id))
+            if (Repository.CheckOut(id))
             {
                  
             }
@@ -102,8 +102,8 @@ namespace GarageWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                Rep.AddVehicle(vehicle);
-                Rep.Updatedb();
+                Repository.AddVehicle(vehicle);
+                Repository.Updatedb();
                 return RedirectToAction("Index");
             }
 

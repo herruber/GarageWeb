@@ -5,15 +5,23 @@
 }
 <form method="get" class="searchfield">
     <input type="text" name="regnr" /> <button type="submit">Submit</button>
+
+	<select id="option" name="option">
+		<option value="0">Regnr</option>
+		<option value="1">Persnr</option>
+		<option value="2">Park Date</option>
+		<option value="3">Vehicle Type</option>
+	</select>
+
 </form>
 
 @using (Html.BeginForm("Remove", "Garage", FormMethod.Get))
 {
     <table id="LotCounter">
         <tr>
-            <th>
+            <td>
                 Free Lots:
-            </th>
+            </td>
 
 
 			@{ 
@@ -37,13 +45,13 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Regnr)
+			@Html.ActionLink(@Html.DisplayNameFor(model => model.Regnr).ToString(), "Index", "Garage", new { @filtering = 1 }, null)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Persnr)
+            @Html.ActionLink(@Html.DisplayNameFor(model => model.Persnr).ToString(), "Index", "Garage", new { @filtering = 2 }, null)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ParkDate)
+            @Html.ActionLink(@Html.DisplayNameFor(model => model.ParkDate).ToString(), "Index", "Garage", new { @filtering = 3 }, null)
         </th>
         <th></th>
     </tr>

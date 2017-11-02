@@ -5,19 +5,86 @@ using System.Web;
 
 namespace GarageWeb.DataAccess
 {
-    public class Repository
+    public static class Repository
     {
 
-        GarageContext gC = new GarageContext();
-        
+        static GarageContext gC = new GarageContext();
+        static bool[] Ordering = new bool[] {false, false, false, false };
 
-        public IEnumerable<Models.Vehicle> GetStock() //Used to display stock
+        //Helper method to order the result
+        public static IEnumerable<Models.Vehicle> OrderCollection(IEnumerable<Models.Vehicle> vehiclelist, int order)
         {
+            Ordering[order] = !Ordering[order]; //Invert the bool
+            //IEnumerable<Models.Vehicle> retGarage;
 
-            return gC.Vehicles;
+            switch (order)
+            {
+                case 1: //regnr
+                    if (Ordering[order])
+                    {
+                        vehiclelist = vehiclelist.OrderByDescending(e => e.Regnr);
+
+                    }
+                    else
+                    {
+                        vehiclelist = vehiclelist.OrderBy(e => e.Regnr);
+                    }
+
+                    break;
+                case 2:
+                    if (Ordering[order])
+                    {
+                        vehiclelist = vehiclelist.OrderByDescending(e => e.Persnr);
+
+                    }
+                    else
+                    {
+                        vehiclelist = vehiclelist.OrderBy(e => e.Persnr);
+                    }
+
+                    break;
+                case 3:
+                    if (Ordering[order])
+                    {
+                        vehiclelist = vehiclelist.OrderByDescending(e => e.ParkDate);
+
+                    }
+                    else
+                    {
+                        vehiclelist = vehiclelist.OrderBy(e => e.ParkDate);
+                    }
+
+                    break;
+            }
+
+
+            return vehiclelist;
         }
 
-        public Models.Vehicle RegHandler(string term) //Used with searchterm
+        public static Common.SearchResult GetStock(int filtering, int option) //Used to display stock
+        {
+            switch (option)
+            {
+                case 0:
+                    gC.Vehicles.fi
+                    break;
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                default:
+                    break;
+            }
+
+            Common.SearchResult result = new Common.SearchResult();
+            result.vehicles = OrderCollection(filtering);
+
+            return result;
+        }
+
+        public static Models.Vehicle RegHandler(string term) //Used with searchterm
         {
             // IEnumerable<Models.Vehicle> tempStock = new List<Models.Vehicle>();
 
@@ -34,13 +101,13 @@ namespace GarageWeb.DataAccess
          
         }
 
-        public void Updatedb()
+        public static void Updatedb()
         {
             gC.SaveChanges();
 
         }
 
-        public bool CheckOut(IEnumerable<Models.Vehicle> input)
+        public static bool CheckOut(IEnumerable<Models.Vehicle> input)
         {
             try
             {
@@ -60,7 +127,7 @@ namespace GarageWeb.DataAccess
             return true;
         }
 
-        public IEnumerable<Models.Vehicle> GetFromRegnr(string[] regnr)
+        public static IEnumerable<Models.Vehicle> GetFromRegnr(string[] regnr)
         {
             List<Models.Vehicle> retVehicles = new List<Models.Vehicle>();
 
@@ -72,7 +139,7 @@ namespace GarageWeb.DataAccess
             return retVehicles;
         }
 
-        public bool CheckOut(string[] input) //Regnr
+        public static bool CheckOut(string[] input) //Regnr
         {
             try
             {
@@ -93,13 +160,13 @@ namespace GarageWeb.DataAccess
             return true;
         }
 
-        public void AddVehicle(Models.Vehicle vehicle)
+        public static void AddVehicle(Models.Vehicle vehicle)
         {
             gC.Vehicles.Add(vehicle);
             gC.SaveChanges();
         }
 
-        public void AddVehicle(Common.vType vtype, string regnr, string persnr, DateTime parkdate)
+        public static void AddVehicle(Common.vType vtype, string regnr, string persnr, DateTime parkdate)
         {
             Models.Vehicle vehicle = new Models.Vehicle();
             vehicle.ParkDate = parkdate;
