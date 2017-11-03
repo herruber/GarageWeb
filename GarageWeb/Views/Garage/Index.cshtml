@@ -9,8 +9,7 @@
 	<select id="option" name="option">
 		<option value="0">Regnr</option>
 		<option value="1">Persnr</option>
-		<option value="2">Park Date</option>
-		<option value="3">Vehicle Type</option>
+		<option value="2">Vehicle Type</option>
 	</select>
 
 </form>
@@ -25,16 +24,14 @@
 
 
 			@{ 
-				int freelots = Common.FreeLots(Model.Count());
 
-
-				if (freelots > 0)
+				if (ViewBag.FreeSlots > 0)
 				{
-					<td class="counter"><text>@freelots</text></td>
+					<td class="counter"><text>@ViewBag.FreeSlots</text></td>
 				}
 				else
 				{
-					<td class="counterred"><text>@freelots</text></td>
+					<td class="counterred"><text>@ViewBag.FreeSlots</text></td>
 				}
 			}
 

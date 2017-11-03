@@ -24,10 +24,12 @@ namespace GarageWeb
 
         public enum vType
         {
+            
             Car,
             Mc,
             Bus,
-            Truck
+            Truck,
+            none
         }
 
         public struct VehicleInfo
@@ -140,6 +142,8 @@ namespace GarageWeb
         {
             return DateTime.Now.Subtract(vehicle.ParkDate).TotalMinutes * PricePerMin;
         }
+
+
 
     }
 }

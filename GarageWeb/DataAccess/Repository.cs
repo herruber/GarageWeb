@@ -61,44 +61,101 @@ namespace GarageWeb.DataAccess
             return vehiclelist;
         }
 
-        public static Common.SearchResult GetStock(int filtering, int option) //Used to display stock
+        public static IEnumerable<Models.Vehicle> GetStock(int filtering) //Used to display stock
         {
-            switch (option)
+
+            return OrderCollection(gC.Vehicles, filtering); //Inputs the stock and filtering mode
+        }
+
+        public static Common.SearchResult Match(IEnumerable<Models.Vehicle> vehicles)
+        {
+            Common.SearchResult result = new Common.SearchResult();
+
+            if (vehicles != null && vehicles.Count() == 1) //IF exact match
             {
-                case 0:
-                    gC.Vehicles.fi
+                result.exactMatch = true;
+            }
+            else
+            {
+                result.exactMatch = false;
+            }
+
+            result.vehicles = vehicles.ToList();
+            return result;
+        }
+
+        public static Common.SearchResult RegHandler(string term, int filtering, int option) //Used with searchterm
+        {
+            // IEnumerable<Models.Vehicle> tempStock = new List<Models.Vehicle>();
+
+
+            //           < option value = "0" > Regnr </ option >
+
+            //< option value = "1" > Persnr </ option >
+
+            //      < option value = "3" > Vehicle Type </ option >
+
+            IEnumerable<Models.Vehicle> temp;
+
+            Common.SearchResult result = new Common.SearchResult();
+            Common.vType searchVtype = Common.vType.none;
+            switch (term.ToLower())
+            {
+                case "car":
+                    searchVtype = Common.vType.Car;
                     break;
-                case 1:
+                case "mc":
+                    searchVtype = Common.vType.Mc;
                     break;
-                case 2:
+                case "truck":
+                    searchVtype = Common.vType.Truck;
                     break;
-                case 3:
+                case "bus":
+                    searchVtype = Common.vType.Bus;
                     break;
                 default:
                     break;
             }
 
-            Common.SearchResult result = new Common.SearchResult();
-            result.vehicles = OrderCollection(filtering);
+            switch (option)
+            {
+                case 0:                    
+                    temp = gC.Vehicles.Where(e => e.Regnr.ToUpper().Equals(term.ToUpper())); //Cast result to a collection
+                    if (temp != null && temp.Count() == 1)
+                    {
+                        result.exactMatch = true;
+                    }
+                    else
+                    {
+                        temp = gC.Vehicles.Where(e => e.Regnr.ToUpper().Contains(term.ToUpper())).ToList();
+                        result.exactMatch = false;                      
+                    }
+                    result.vehicles = temp;
+                    break;
+                case 1:
+                    temp = gC.Vehicles.Where(e => e.Persnr.ToUpper().Equals(term.ToUpper())); //Cast result to a collection
+                    if (temp != null && temp.Count() == 1)
+                    {
+                        result.exactMatch = true;
+                    }
+                    else
+                    {
+                        temp = gC.Vehicles.Where(e => e.Persnr.ToUpper().Contains(term.ToUpper())).ToList();
+                        result.exactMatch = false;
+                    }
+                    result.vehicles = temp;
+                    break;
+                case 2:
+                    temp = gC.Vehicles.Where(e => e.VehicleType == searchVtype).ToList(); //Cast result to a collection
+                    result.exactMatch = true;
+                    result.vehicles = temp;
+                    break;
+                default:
+                    break;
+            }
+
 
             return result;
-        }
-
-        public static Models.Vehicle RegHandler(string term) //Used with searchterm
-        {
-            // IEnumerable<Models.Vehicle> tempStock = new List<Models.Vehicle>();
-
-            var tempVehicle = gC.Vehicles.FirstOrDefault(e => e.Regnr.ToLower().Equals(term.ToLower())); //IF regnr or persnr was a match
-
-            if (tempVehicle == null)
-            {
-                return null;
-            }
-            else
-            {
-                return tempVehicle;
-            }
-         
         }
 
         public static void Updatedb()
@@ -146,6 +203,10 @@ namespace GarageWeb.DataAccess
                 foreach (var item in input)
                 {
                     var tempVehicle = gC.Vehicles.FirstOrDefault(e => e.Regnr.ToLower().Contains(item.ToLower()));
+
+                    Models.History historyVehicle = new Models.History(tempVehicle.Regnr, tempVehicle.Persnr, tempVehicle.VehicleType, tempVehicle.ParkDate, Common.CurrentDate(), Common.CalcPrice(tempVehicle));
+
+                    gC.History.Add(historyVehicle);
 
                     gC.Vehicles.Remove(tempVehicle);
                     gC.SaveChanges();
