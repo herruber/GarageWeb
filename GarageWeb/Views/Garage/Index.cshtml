@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 <form method="get" class="searchfield">
-    <input type="text" name="regnr" /> <button type="submit">Submit</button>
+    <input type="text" name="regnr" id="sfield"/> <button type="submit">Submit</button>
 
 	<select id="option" name="option">
 		<option value="0">Regnr</option>
@@ -28,17 +28,17 @@
             </td>
 
 
-			@{ 
+            @{
 
-				if (ViewBag.FreeSlots > 0)
-				{
-					<td class="counter"><text>@ViewBag.FreeSlots</text></td>
-				}
-				else
-				{
-					<td class="counterred"><text>@ViewBag.FreeSlots</text></td>
-				}
-			}
+                if (ViewBag.FreeSlots > 0)
+                {
+                    <td class="counter"><text>@ViewBag.FreeSlots</text></td>
+                }
+                else
+                {
+                    <td class="counterred"><text>@ViewBag.FreeSlots</text></td>
+                }
+            }
 
         </tr>
     </table>

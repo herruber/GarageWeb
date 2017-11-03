@@ -48,27 +48,32 @@ textarea {
     display: block;
     text-align: center;
     padding-top: 20px;
+    z-index: -20;
 }
 
 .navbar-inverse {
     background-color: blue;
     border-color: transparent;
-    z-index: -1;
 }
 
-    .navbar-inverse .navbar-brand {
-        color: white;
-        border: 2px solid lightblue;
-        background-color: blue;
-        border-radius: 15px;
-    }
+.navbar-inverse::before {
+    display: none;
+}
 
-        .navbar-inverse .navbar-brand:hover {
-            color: navajowhite;
-            border: 3px solid gold;
-            background: midnightblue;
-            border-radius: 15px;
-        }
+.navbar-inverse .navbar-brand {
+    border: 2px solid lightblue;
+    background-color: blue;
+    border-radius: 15px;
+    color: gold;
+    z-index: 5;
+}
+
+.navbar-inverse .navbar-brand:hover {
+        color: navajowhite;
+        border: 3px solid gold;
+        background: midnightblue;
+        border-radius: 15px;
+}
 
 .counter {
     background-color: lime;
@@ -80,28 +85,31 @@ textarea {
 
 #LotCounter {
     border: 2px solid blue;
-    margin-top: -93px;
+    margin-top: -93px; 
     margin-left: auto;
     margin-right: 73%;
     border-radius: 15px;
     border-collapse: initial;
     color: floralwhite;
     background: blue;
-    z-index: 5;
+    z-index: 10000000000;
 }
 
-    #LotCounter td {
-        padding: 8px;
-        padding-right: 15px;
-        padding-left: 15px;
-        text-align: initial;
-        font-weight: 700;
-        border-radius: 0 13px 13px 0;
-    }
+#LotCounter td{
+    padding: 8px;
+    padding-right: 15px;
+    padding-left: 15px;
+    text-align: initial;
+    font-weight: 700;
+    border-radius: 0 13px 13px 0;
+    z-index: 101;
+}
 
 .searchfield {
     padding-top: 25px;
     text-align: center;
+    color: floralwhite;
+
 }
 
 .table {
@@ -129,6 +137,13 @@ textarea {
         color: gold;
     }
 
+input {
+    border-radius: 1px;
+    border: 1px solid lightblue;
+    color: floralwhite;
+    background: #2d2dff;
+}
+
 input:hover {
     border-radius: 3px;
     background: midnightblue;
@@ -136,19 +151,29 @@ input:hover {
     color: navajowhite;
 }
 
+#option {
+    border-radius: 1px;
+    border: 1px solid lightblue;
+    color: floralwhite;
+    background: #2d2dff;
+}
+
+
 button {
     border-radius: 3px;
     background: lightgray;
 }
 
-    button:hover {
-        border-radius: 3px;
-        color: gold;
-        background: gray;
-    }
+button:hover {
+    border-radius: 3px;
+    color: gold;
+    background: gray;
+}
 
 footer {
     position: absolute;
     width: 90%;
     bottom: 5%; /* stick to bottom */
 }
+
+
