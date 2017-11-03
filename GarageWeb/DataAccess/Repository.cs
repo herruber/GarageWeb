@@ -7,13 +7,10 @@ namespace GarageWeb.DataAccess
 {
     public class Repository
     {
-
         GarageContext gC = new GarageContext();
-        
 
         public IEnumerable<Models.Vehicle> GetStock() //Used to display stock
         {
-
             return gC.Vehicles;
         }
 
@@ -46,10 +43,8 @@ namespace GarageWeb.DataAccess
             {
                 foreach (var item in input)
                 {
-
                     gC.Vehicles.Remove(item);
                     gC.SaveChanges();
-
                 }
             }
             catch

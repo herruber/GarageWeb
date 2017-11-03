@@ -16,24 +16,19 @@ namespace GarageWeb.Models
         [Key]
         public string Regnr { get; set; }
         public string Persnr {get; set; }
-
         public DateTime ParkDate { get; set; }
-
-
         public Common.vType VehicleType { get; set; }
+
+        public Vehicle()
+        {
+        }
 
         public Vehicle(string regnr, string persnr, Common.vType vehicletype)
         {
             ParkDate = Common.CurrentDate();
-            //hej
             Regnr = regnr;
             Persnr = persnr;
             VehicleType = vehicletype;
-        }
-
-        public Vehicle()
-        {
-
         }
     }
 }
