@@ -14,7 +14,12 @@
 
 </form>
 
-@using (Html.BeginForm("Remove", "Garage", FormMethod.Get))
+<div min-width="480px" display="none">
+    <img src="~/Content/QfreeBlue.png" alt="logo" />
+</div>
+
+
+@using (Html.BeginForm("ConfirmDelete", "Garage", FormMethod.Get))
 {
     <table id="LotCounter">
         <tr>

@@ -77,6 +77,7 @@ namespace GarageWeb.Controllers
         {
 
 
+
             if (Repository.CheckOut(id))
             {
                  
@@ -85,6 +86,11 @@ namespace GarageWeb.Controllers
 
             return RedirectToAction("Index", "Garage");
 
+        }
+
+        public ActionResult History()
+        {
+            return View(Repository.GetHistory());
         }
 
         // GET: Garage/Details/5
