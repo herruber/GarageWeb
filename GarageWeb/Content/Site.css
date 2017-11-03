@@ -45,25 +45,20 @@ textarea {
 }
 
 .navbar-header {
-    display: block;
-    text-align: center;
-    padding-top: 20px;
+	display: block;
+	text-align: center;
+	padding-top: 20px;
 }
 
-.navbar-inverse {
-    background-color: blue;
-    border-color: transparent;
-    z-index: -1;
-}
 
-    .navbar-inverse .navbar-brand {
+.navbar-inverse .navbar-brand {
         color: white;
         border: 2px solid lightblue;
         background-color: blue;
         border-radius: 15px;
     }
 
-        .navbar-inverse .navbar-brand:hover {
+.navbar-inverse .navbar-brand:hover {
             color: navajowhite;
             border: 3px solid gold;
             background: midnightblue;
@@ -90,7 +85,7 @@ textarea {
     z-index: 5;
 }
 
-    #LotCounter td {
+#LotCounter td {
         padding: 8px;
         padding-right: 15px;
         padding-left: 15px;
@@ -124,7 +119,7 @@ textarea {
     background: lightgrey;
 }
 
-    #submitbut:hover {
+#submitbut:hover {
         background: grey;
         color: gold;
     }
@@ -141,7 +136,7 @@ button {
     background: lightgray;
 }
 
-    button:hover {
+button:hover {
         border-radius: 3px;
         color: gold;
         background: gray;

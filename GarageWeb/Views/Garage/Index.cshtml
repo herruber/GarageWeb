@@ -58,26 +58,32 @@
         <th></th>
     </tr>
 
+	@{
+		if (Model != null)
+		{
+			foreach (var item in Model)
+			{
+				<tr>
+					<td>
+						@Html.DisplayFor(modelItem => item.Regnr)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.Persnr)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.ParkDate)
+					</td>
+					<td>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Regnr)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Persnr)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ParkDate)
-            </td>
-            <td>
-                
-                <input id="delbox" type="checkbox" name="id" value="@item.Regnr" />
+						<input id="delbox" type="checkbox" name="id" value="@item.Regnr" />
 
-            </td>
-        </tr>
-    }
+					</td>
+				</tr>
+			}
+		}
+	}
+
+    
 
 
 </table>

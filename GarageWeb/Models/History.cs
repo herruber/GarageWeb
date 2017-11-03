@@ -12,6 +12,8 @@ namespace GarageWeb.Models
     public class History
     {
         [Key]
+        public int id { get; set; }
+
         public string Regnr { get; set; }
         public string Persnr { get; set; }
 
