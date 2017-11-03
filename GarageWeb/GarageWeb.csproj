@@ -127,9 +127,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201711031037501_history.cs" />
-    <Compile Include="Migrations\201711031037501_history.Designer.cs">
-      <DependentUpon>201711031037501_history.cs</DependentUpon>
+    <Compile Include="Migrations\201711031206565_start.cs" />
+    <Compile Include="Migrations\201711031206565_start.Designer.cs">
+      <DependentUpon>201711031206565_start.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\History.cs" />
@@ -141,7 +141,12 @@
     <Content Include="App_Data\Garage_log.ldf">
       <DependentUpon>Garage.mdf</DependentUpon>
     </Content>
+    <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Qfree.gif" />
+    <Content Include="Content\Qfree.png" />
+    <Content Include="Content\QfreeBlue.gif" />
+    <Content Include="Content\QfreeBlue.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -192,8 +197,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201711031037501_history.resx">
-      <DependentUpon>201711031037501_history.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711031206565_start.resx">
+      <DependentUpon>201711031206565_start.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
