@@ -10,6 +10,7 @@ namespace GarageWeb.DataAccess
     {
 
         public DbSet<Models.Vehicle> Vehicles { get; set; }
+        public DbSet<Models.History> History { get; set; }
 
         public GarageContext() : base("DefaultConnection")
         {

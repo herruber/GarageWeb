@@ -12,12 +12,24 @@ namespace GarageWeb
         public static int ParkSpace = 3;
         public static double PricePerMin = 5;
 
+        public static int PrevCase = 0; //Keeps track of the previous filtering method
+
+        public enum searchMode
+        {
+            Regnr,
+            Persnr,
+            ParkDate,
+            VehicleType
+        }
+
         public enum vType
         {
+            
             Car,
             Mc,
             Bus,
-            Truck
+            Truck,
+            none
         }
 
         public struct VehicleInfo
@@ -29,6 +41,12 @@ namespace GarageWeb
                 public DateTime parkdate;
 
 	        }
+
+        public struct SearchResult
+        {
+            public bool exactMatch;
+            public IEnumerable<Models.Vehicle> vehicles;
+        }
 
         public static DateTime CurrentDate()
         {
@@ -124,5 +142,8 @@ namespace GarageWeb
         {
             return DateTime.Now.Subtract(vehicle.ParkDate).TotalMinutes * PricePerMin;
         }
+
+
+
     }
 }

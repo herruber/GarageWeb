@@ -14,35 +14,48 @@ namespace GarageWeb.Controllers
     //stuff
     public class GarageController : Controller
     {
-        private Repository Rep = new Repository();
+        //private Repository Rep = new Repository();
 
         // GET: Garage
-        public ActionResult Index(string regnr = null)
+        public ActionResult Index(string regnr = null, int filtering = 0, int option = 0)
         {
-
+            ViewBag.FreeSlots = Common.FreeLots(Repository.GetStock(filtering).Count());
+            //CHECK if there is a search term
             if (regnr == null || regnr.Trim() == "")
             {
-                return View(Rep.GetStock());
+                return View(Repository.GetStock(filtering));
             }
 
-            var tempVehicles = Rep.RegHandler(regnr);
 
-            if (tempVehicles == null) //If no results check in vehicle
+            Common.SearchResult tempVehicles = Repository.RegHandler(regnr, filtering, option);
+
+            if (tempVehicles.vehicles == null || tempVehicles.vehicles.Count() == 0) //If no results check in vehicle
             {
-                
-                Common.VehicleInfo vh = Common.GatherInfo(regnr);
-                
-                ViewBag.Valid = vh.isvalid;
-                ViewBag.Persnr = vh.persnr;
-                ViewBag.Vtype = vh.vehicletype;
-                ViewBag.Regnr = regnr;
-                ViewBag.Date = vh.parkdate;
 
-                return View("Add"); //If vehicle was already checked in, ask if checkout
+                if (option == 0) //IF handling reg number
+                {
+                    Common.VehicleInfo vh = Common.GatherInfo(regnr);
+
+                    ViewBag.Valid = vh.isvalid;
+                    ViewBag.Persnr = vh.persnr;
+                    ViewBag.Vtype = vh.vehicletype;
+                    ViewBag.Regnr = regnr;
+                    ViewBag.Date = vh.parkdate;
+
+                    return View("Add");
+                }
+
+                return View();
+                
             }
             else
             {
-                return View("Remove", tempVehicles); //If regnr is not null return whole stock, else only the regnr
+                if (tempVehicles.exactMatch && option == 0)
+                {
+                    return View("Remove", tempVehicles.vehicles); //If regnr is not null return whole stock, else only the regnr
+                }
+
+                return View(tempVehicles.vehicles);
             }
             
         }
@@ -50,19 +63,21 @@ namespace GarageWeb.Controllers
         public ActionResult Remove(string[] id)
         {
 
-            return View(Rep.GetFromRegnr(id));
+            return View(Repository.GetFromRegnr(id));
         }
 
         public ActionResult ConfirmAdd(Common.vType vtype, string regnr, string persnr, DateTime date)
         {
 
-           Rep.AddVehicle(vtype, regnr, persnr, date);
+           Repository.AddVehicle(vtype, regnr, persnr, date);
            return RedirectToAction("Index", "Garage");
         }
 
         public ActionResult ConfirmDelete(string[] id)
         {
-            if (Rep.CheckOut(id))
+
+
+            if (Repository.CheckOut(id))
             {
                  
             }
@@ -102,8 +117,8 @@ namespace GarageWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                Rep.AddVehicle(vehicle);
-                Rep.Updatedb();
+                Repository.AddVehicle(vehicle);
+                Repository.Updatedb();
                 return RedirectToAction("Index");
             }
 
