@@ -68,6 +68,10 @@ namespace GarageWeb.DataAccess
             return OrderCollection(gC.Vehicles, filtering); //Inputs the stock and filtering mode
         }
 
+        public static IEnumerable<Models.History> GetHistory()
+        {
+            return gC.History;
+        }
 
         public static Common.SearchResult Match(IEnumerable<Models.Vehicle> vehicles)
         {
@@ -156,6 +160,7 @@ namespace GarageWeb.DataAccess
                     break;
             }
 
+            result.vehicles = OrderCollection(result.vehicles, filtering);
 
             return result;
         }
@@ -207,18 +212,22 @@ namespace GarageWeb.DataAccess
                     var tempVehicle = gC.Vehicles.FirstOrDefault(e => e.Regnr.ToLower().Contains(item.ToLower()));
 
                     Models.History historyVehicle = new Models.History(tempVehicle.Regnr, tempVehicle.Persnr, tempVehicle.VehicleType, tempVehicle.ParkDate, Common.CurrentDate(), Common.CalcPrice(tempVehicle));
+                    historyVehicle.id = gC.History.ToList().Count();
 
                     gC.History.Add(historyVehicle);
 
                     gC.Vehicles.Remove(tempVehicle);
                     gC.SaveChanges();
-                    
+
                 }
             }
-            catch
+            catch (Exception e)
             {
+                string asd = e.ToString();
+
                 return false;
             }
+
 
             return true;
         }

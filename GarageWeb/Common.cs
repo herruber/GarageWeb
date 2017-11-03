@@ -79,7 +79,7 @@ namespace GarageWeb
 
             vh.isvalid = true;
 
-            switch (rand.Next(0, 100))
+            switch (rand.Next(0, 4))
             {
                 case 0:
                     vh.vehicletype = vType.Car;
