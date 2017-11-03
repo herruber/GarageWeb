@@ -1,6 +1,23 @@
-﻿body {
+﻿@media screen and (max-width: 835px) {
+    img {
+        display: none
+    }
+}
+
+body {
     padding-top: 50px;
-    padding-bottom: 20px;
+    padding-bottom: 0px;
+    background-color: ghostwhite;
+    height: 90vh;
+    max-height: 90vh;
+}
+
+img {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    border-color: transparent;
+    opacity: 1;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -23,27 +40,115 @@ textarea {
     max-width: 280px;
 }
 
-.navbar-header{
-        display: block;
-    text-align: center;
-    padding-top: 15px;
+.navbar {
+    min-height: 60px;
 }
 
-.counter{
+.navbar-header {
+    display: block;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.navbar-inverse {
+    background-color: blue;
+    border-color: transparent;
+    z-index: -1;
+}
+
+    .navbar-inverse .navbar-brand {
+        color: white;
+        border: 2px solid lightblue;
+        background-color: blue;
+        border-radius: 15px;
+    }
+
+        .navbar-inverse .navbar-brand:hover {
+            color: navajowhite;
+            border: 3px solid gold;
+            background: midnightblue;
+            border-radius: 15px;
+        }
+
+.counter {
     background-color: lime;
 }
 
-.counterred{
-	background-color: red;
+.counterred {
+    background-color: orangered;
 }
 
-#LotCounter{
-    border: 1px solid black;
+#LotCounter {
+    border: 2px solid blue;
+    margin-top: -93px;
     margin-left: auto;
-    margin-right: 90%;
+    margin-right: 73%;
+    border-radius: 15px;
+    border-collapse: initial;
+    color: floralwhite;
+    background: blue;
+    z-index: 5;
 }
 
-.searchfield{
-    padding-top: 15px;
+    #LotCounter td {
+        padding: 8px;
+        padding-right: 15px;
+        padding-left: 15px;
+        text-align: initial;
+        font-weight: 700;
+        border-radius: 0 13px 13px 0;
+    }
+
+.searchfield {
+    padding-top: 25px;
     text-align: center;
+}
+
+.table {
+    display: block;
+    margin-top: 15%;
+    margin-left: auto;
+    margin-right: auto;
+    text-transform: uppercase;
+    width: 400px;
+    max-height: 60vh;
+    overflow: auto;
+}
+
+#submitbut {
+    border-collapse: initial;
+    border-radius: 10px;
+    margin-left: 60%;
+    margin-right: auto;
+    margin-top: 2%;
+    background: lightgrey;
+}
+
+    #submitbut:hover {
+        background: grey;
+        color: gold;
+    }
+
+input:hover {
+    border-radius: 3px;
+    background: midnightblue;
+    border: 1px solid gold;
+    color: navajowhite;
+}
+
+button {
+    border-radius: 3px;
+    background: lightgray;
+}
+
+    button:hover {
+        border-radius: 3px;
+        color: gold;
+        background: gray;
+    }
+
+footer {
+    position: absolute;
+    width: 90%;
+    bottom: 5%; /* stick to bottom */
 }
