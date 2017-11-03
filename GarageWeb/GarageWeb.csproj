@@ -182,6 +182,7 @@
     <Content Include="Views\Garage\Edit.cshtml" />
     <Content Include="Views\Garage\Add.cshtml" />
     <Content Include="Views\Garage\Remove.cshtml" />
+    <Content Include="Views\Garage\History.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -88,6 +88,11 @@ namespace GarageWeb.Controllers
 
         }
 
+        public ActionResult History()
+        {
+            return View(Repository.GetHistory());
+        }
+
         // GET: Garage/Details/5
         public ActionResult Details(string id)
         {

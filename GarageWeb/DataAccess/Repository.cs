@@ -68,6 +68,10 @@ namespace GarageWeb.DataAccess
             return OrderCollection(gC.Vehicles, filtering); //Inputs the stock and filtering mode
         }
 
+        public static IEnumerable<Models.History> GetHistory()
+        {
+            return gC.History;
+        }
 
         public static Common.SearchResult Match(IEnumerable<Models.Vehicle> vehicles)
         {
