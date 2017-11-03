@@ -67,6 +67,7 @@ namespace GarageWeb.DataAccess
             return OrderCollection(gC.Vehicles, filtering); //Inputs the stock and filtering mode
         }
 
+
         public static Common.SearchResult Match(IEnumerable<Models.Vehicle> vehicles)
         {
             Common.SearchResult result = new Common.SearchResult();
